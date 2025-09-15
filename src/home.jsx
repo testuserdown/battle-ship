@@ -1,7 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import { rooms } from "./context/data";
 import "./home.css";
+import { RiTwitterXFill } from "react-icons/ri";
 
+const ENV = window.__ENV || {};
+const title = ENV.TITLE || "Default Title";
+const x = ENV.X || "https://x.com";
 export const App = () => {
   const navigete = useNavigate();
   const handlePlay = () => {
@@ -11,11 +15,16 @@ export const App = () => {
     <div className="w100 df fdc aic home-container">
       <i></i>
       <div className="title">
-        <h1>BATTLE OF THE PIRATES</h1>
+        <h1>{title}</h1>
       </div>
-      <button className="button" onClick={handlePlay}>
-        Play
-      </button>
+      <div className="df aic gap-10">
+        <button className="button df aic gap-15" onClick={() => window.open(x, "_blank")}>
+          Follow Us <RiTwitterXFill />
+        </button>
+        <button className="button" onClick={handlePlay}>
+          Play
+        </button>
+      </div>
 
       <div className="df fdc aic gap-10 rooms">
         <h1 className="w100 df aic jcc ">LIVE MATCHES</h1>
@@ -45,7 +54,7 @@ export const App = () => {
           </div>
         ))}
         <footer className="footer">
-          <p>Battle of the Pirates © 2023</p>
+          <p>The Trenches BattleShip © 2023</p>
           <span>
             All rights reserved. This is a fictional game created for
             educational purposes.
